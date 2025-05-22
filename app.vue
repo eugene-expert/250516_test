@@ -9,6 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import { useNoteTypes } from '@/composables/useNoteTypes'
-useNoteTypes()
+// import { useNoteTypes } from '@/composables/useNoteTypes'
+// useNoteTypes()
 </script>
