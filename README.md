@@ -52,19 +52,19 @@ cd 250516_test
 
 
 
-- Install Dependencies
+### 2. Install Dependencies
 
 npm install
 
-- Start the Development Server
+### 3. Start the Development Server
 
 npm run dev
 
-- Build for Production
+### 4. Build for Production
 
 npm run build
 
-🎨 Design Tokens
+### 5. 🎨 Design Tokens
 
 Integrated from Figma:
 Primary Color: #007AFF
@@ -75,25 +75,25 @@ Border Radius: button: 12px
 Box Shadow: card: 0 4px 8px rgba(0,0,0,0.1)
 You can find these in tailwind.config.js.
 
-✅ Validation Rules
+### 6. ✅ Validation Rules
 Title: Required
 Type: Required
 Content: Required unless note type is image
 Image URL: Required only when note type is image
 
-📦 Dependencies
+### 7. 📦 Dependencies
 Nuxt 3
 Tailwind CSS
 Pinia
 @vueuse/core (optional composables like onClickOutside)
 
-🛠 Future Improvements
+### 8. 🛠 Future Improvements
 Backend API integration
 User authentication
 Drag-and-drop note reordering
 Rich text editor for content
 
-🧑‍🎨 Author
+### 9. 🧑‍🎨 Author
 Made by Yevhenii – Frontend Developer from Kyiv 🇺🇦
 
 
