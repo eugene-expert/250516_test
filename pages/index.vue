@@ -6,6 +6,33 @@
 
     <!-- Header Row: Filter & Add Button -->
     <div class="flex justify-end items-center mb-8 gap-3">
+      <!-- Selected Tags Pills -->
+      <div v-if="selectedTags.length && !selectedTags.includes('')" class="flex gap-2 mr-2">
+        <span v-for="tag in selectedTags" :key="tag" class="flex items-center bg-gray-100 text-gray-800 rounded-full px-3 py-1 text-sm">
+          {{ tagLabel(tag) }}
+          <button @click="removeTag(tag)" class="ml-1 text-lg leading-none focus:outline-none">&times;</button>
+        </span>
+      </div>
+      <!-- Filter Dropdown Button -->
+      <BaseDropdown
+        v-model="selectedTags"
+        :options="[
+          { label: 'All', value: '' },
+          { label: 'Default', value: 'default' },
+          { label: 'image', value: 'image' },
+          { label: 'checkbox', value: 'checkbox' }
+        ]"
+        :buttonClass="'bg-black text-white rounded-full px-6 py-2 font-bold text-base flex items-center gap-2 border-none shadow-none min-w-[110px] justify-center'"
+      >
+        <template #button>
+          <span class="flex items-center gap-2 w-full justify-center">
+            Filter
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="white">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M8 12h8m-4 6h4" />
+            </svg>
+          </span>
+        </template>
+      </BaseDropdown>
       <BaseButton @click="showAddModal = true" variant="primary" rounded="full" class="gap-2">
         <span class="text-2xl leading-none flex items-center">+</span>
         <span class="text-base flex items-center">Add New</span>
@@ -69,6 +96,17 @@ const newNote = ref<NoteInput>({
   content: '',
   imageUrl: ''
 })
+
+const tagLabel = (tag: string) => {
+  if (tag === 'default') return 'Default'
+  if (tag === 'image') return 'Image'
+  if (tag === 'checkbox') return 'Checkbox'
+  return tag
+}
+
+function removeTag(tag: string) {
+  selectedTags.value = selectedTags.value.filter(t => t !== tag)
+}
 
 const filteredNotes = computed(() => {
   if (!selectedTags.value.length || selectedTags.value.includes('')) {
